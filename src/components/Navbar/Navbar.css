@@ -1,0 +1,21 @@
+.navbar{
+    background-color: #202020;
+}
+
+.bi-youtube{
+    color: #ff0000;
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+}
+
+.icons i{
+    margin-left: 35px;
+    cursor: pointer;
+}
