@@ -2,7 +2,7 @@ import './Navbar.css';
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 
-const Navbar = (props) => {
+const Navbar = ({ onSubmit }) => {
     return(
         <nav className="navbar">
             <div className="container-fluid">
@@ -11,7 +11,7 @@ const Navbar = (props) => {
                     <h3 className='m-0 p-0'>Youtube</h3>
                 </div>
                 
-                <SearchBar onNextSubmit={props.onSubmit}/>
+                <SearchBar onNextSubmit={onSubmit}/>
 
                 <div className="icons">
                     <i className="bi bi-camera-video"></i> 

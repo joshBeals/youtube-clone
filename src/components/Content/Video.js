@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Video = (props) => {
-    const { video } = props;
-
-    if(!video){
+const Video = ({ video }) => {
+    
+    if(!video || video.length == 0){
         return(
             <div>No video</div>
         );

@@ -1,40 +1,41 @@
 import './App.css';
 import youtube from '../api/youtube';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar/Navbar';
 import Content from './Content/Content';
 
-class App extends React.Component {
+const App = () => {
 
-    state = { data: [], video: [] };
+    const [data, setData] = useState([]);
+    const [video, setVideo] = useState([]);
+    const [term, setTerm] = useState('');
 
-    componentDidMount = async() =>{
-        this.onSearchSubmit('curry');
-    }
-
-    changeSelectedVideo = video => {
-        this.setState({ video: video });
-    }
-
-    onSearchSubmit = async (term) => {
+    useEffect(() => {
+        const onSearchSubmit = async () => {
         
-        const response = await youtube.get('/search', {
-            params: { q: term }
-        });
+            const response = await youtube.get('/search', {
+                params: { q: term }
+            });
 
-        this.setState({ data: response.data.items, video: response.data.items[0] });
+            setData(response.data.items);
+            setVideo(response.data.items[0]);
+        }
+        onSearchSubmit();
+    }, [term]);
+
+    const changeSelectedVideo = (video) => {
+        setVideo(video);
     }
 
-    render(){
-        return(
-            <div className=''>
-                <Navbar onSubmit={this.onSearchSubmit} />
-                <div className='d-flex justify-content-center col-12'>
-                    <Content videos={this.state.data} selectedVideo={this.state.video} changeVideo={this.changeSelectedVideo} />
-                </div>
+    return(
+        <div className=''>
+            <Navbar onSubmit={setTerm} />
+            <div className='d-flex justify-content-center col-12'>
+                <Content videos={data} selectedVideo={video} changeVideo={changeSelectedVideo} />
             </div>
-        );
-    }
+        </div>
+    );
+
 }
 
 export default App;

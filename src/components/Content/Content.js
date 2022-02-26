@@ -3,9 +3,9 @@ import Spinner from '../Spinner';
 import VideoList from './VideoList';
 import Video from './Video';
 
-const Content = props => {
-    console.log(props.videos[0]);
-    if(props.videos == ''){
+const Content = ({ videos, selectedVideo, changeVideo }) => {
+    
+    if(videos == ''){
         return(
             <Spinner />
         );
@@ -14,10 +14,10 @@ const Content = props => {
     return(
         <div className='container-fluid row mt-5 text-white'>
             <div className='col-lg-8'>
-                <Video video={props.selectedVideo} />
+                <Video video={selectedVideo} />
             </div>
             <div className='col-lg-4'>
-                <VideoList videos={props.videos} newVideo={props.changeVideo} /> 
+                <VideoList videos={videos} newVideo={changeVideo} /> 
             </div>
         </div>
     );
