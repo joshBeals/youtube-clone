@@ -7,7 +7,7 @@ import Content from './Content/Content';
 const App = () => {
 
     const [data, setData] = useState([]);
-    const [video, setVideo] = useState([]);
+    const [video, setVideo] = useState(null);
     const [term, setTerm] = useState('');
 
     useEffect(() => {

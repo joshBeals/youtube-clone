@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Video = ({ video }) => {
-    
-    if(!video || video.length == 0){
+
+    if(!video){
         return(
             <div>No video</div>
         );
